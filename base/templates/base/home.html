@@ -1,0 +1,63 @@
+
+{% extends 'main.html' %}
+
+{% block  content %}
+{% load static %}
+<style>
+    .home-container{
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        
+        width: 100%;
+        height: 100%;
+
+    }
+   
+    
+</style>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'intro' %}">Home</a></li>
+      
+      <li class="breadcrumb-item active" aria-current="page">Fashion-chat</li>
+    </ol>
+  </nav>
+<div class="home-container">
+    
+    <div class="container">
+        {% include 'base/type_componenet.html' %}
+        
+    </div>
+
+        <div class="container">
+
+            <nav class="navbar navbar-light bg-light">
+                <form class="form-inline" method="GET" action="{% url 'home' %}">
+                  <input class="form-control mr-sm-2"  type="text" name="q" placeholder="Search post...."  aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </nav>
+
+
+            
+            <h5 class="pa">{{post_count}} Posts Avaliable </h5>
+            
+            <a class="nav-link" href="{% url 'create-post' %}"> <button type="button" class="btn btn-success"> create-post</button></a>
+            
+
+        <div class="container" data-spy="scroll">
+            {% include 'base/feed_componenet.html' %}
+        </div>
+    
+        </div>
+    <div class="container">
+        {% include 'base/activity_componenet.html' %}
+    </div>
+
+
+</div>
+
+
+
+{% endblock content %}

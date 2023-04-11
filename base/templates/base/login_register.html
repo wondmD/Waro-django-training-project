@@ -1,0 +1,110 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+
+<style>
+    .bgds{
+
+    }
+    .login-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        
+
+        
+
+    }
+    .login-form{
+        margin-top: 20%;
+        background: transparent;
+        border:3px solid #4154d2;
+        border-radius: 10px;
+        
+    }
+    .labels{
+        font-size: 20px;
+        margin-top: 8%;
+        margin-left: 20%;
+        font-family: fantasy;
+    }
+    .tabs{
+        margin-left: 50%;
+        font-size: 20px;
+        color:#ffffff ;
+        border:2px solid #07aa59;
+        border-radius: 3px;
+        background-color: #07aa59;
+        font-family: fantasy;
+    }
+    .signup{
+        text-decoration: none;
+        
+        font-size: 20px;
+        color:#ffffff ;
+        border:2px solid #07aa59;
+        border-radius: 3px;
+        background-color: #07aa59
+    }
+    .forms{
+        font-size: 14px;
+        margin-top: 3%;
+        margin-left: 5%;
+        font-family: fantasy;
+        
+    }
+</style>
+<div class="bgds">
+    {% if page == 'login' %}
+    <div class="login-container">
+        <div>
+
+        </div>
+        <div class="login-form">
+            <form method="POST" enctype="multipart/form-data" action="">
+                {% csrf_token %}
+                <div class="labels">
+                    <label><img src="{% static 'images/person.svg' %}" alt="">  Username</label>
+                    <input type="text" name="username" placeholder="Enter username">
+                </div>
+                <br>
+                <div class="labels">
+                    <label><img src="{% static 'images/lock.svg' %}" alt="">  Password</label>
+                    <input type="password" name="password" placeholder="Enter Password">
+                </div>
+                <br>
+                <input class="tabs" type="submit" value="Login">
+            </form>
+
+            <p class="labels">haven't signed up yet? <a class="signup" href="{% url 'register' %}">sign up</a></p>
+            
+        </div>
+
+        <div>
+
+        </div>
+
+    </div>
+    {% else %}
+    <div class="login-container">
+        <div>
+
+        </div>
+        <div class="login-form">
+            <form class="forms" method="POST" enctype="multipart/form-data" action="">
+                {% csrf_token %}
+
+                {{ form.as_p}}
+                <input class="tabs" type="submit" value="Register">
+            </form>
+            <p>Already signd up?</p>
+            <a class="signup" href="{% url 'login' %}">LOGIN</a>
+        </div>
+        <div>
+
+        </div>
+  </div>
+    {% endif %}
+  
+</div>
+{% endblock content %}

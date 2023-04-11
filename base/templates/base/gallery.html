@@ -1,0 +1,77 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        .g_container{
+            
+        }
+        .g_post{
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+           
+        }
+        .photo{
+            height: 300px;
+            width: 300px;
+        }
+        .post_g{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+        .cap{
+            background: transparent;
+            border:3px solid #4154d2;
+            border-radius: 10px;
+        }
+        .capp{
+            font-size: 20px;
+            font-family: fantasy;
+        }
+
+    </style>
+    
+</head>
+
+<h3>TG Gallery</h3>
+<body class="g_container">
+    {% for gallery in gallerys %}
+    <div class="g_post">
+        <div>
+
+        </div>
+        <div class="post_g">
+            <span class="border-right">
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <a href="{{gallery.Gallery_image.url}}"><img class="photo" src="{{gallery.Gallery_image.url}}" alt=""></a>
+                </div>
+            </span>
+
+            <span class="border-left">
+                <div class="shadow p-3 mb-5 bg-white rounded" >
+                
+                    <p class = capp>{{gallery.caption}}</p>
+                </div>
+    
+            </span>
+                
+            
+        </div>
+        <div>
+
+        </div>
+    </div>
+
+    {% endfor %}
+</body>
+</html>
+{% endblock content %}

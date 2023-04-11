@@ -1,0 +1,73 @@
+<style>
+    .navbar_container{
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        resize: both;
+        
+    }
+    .logo{
+   
+        font-family:fantasy;
+       
+        font-size: 20px;
+        color: #5a6bef;
+        
+    
+    }
+
+ 
+    .logs{
+      
+        font-size: 25px;
+        font-weight: bold;
+        color: rgb(98, 30, 133);
+        font-family: fantasy;
+        text-decoration: none;
+        
+    }
+    
+</style>
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'intro' %}">WARO-FASHION</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'intro' %}"><button type="button" class="btn btn-primary">Home</button>
+
+            <span class="sr-only">(current)</span></a>
+        </li>
+        
+          
+        
+        
+        </li>
+        
+      </ul>
+    </div>
+    
+
+
+    <ul class="nav justify-content-end">
+        {% if request.user.is_authenticated %}
+        <li class="nav-item">
+            <p class="greeting"><h5><span class="badge badge-secondary">Loged in as {{request.user}}!</span></h5>
+                </p>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}"><button type="button" class="btn btn-warning"> <img src="{% static 'images/user-minus.svg' %}" alt=""> LOGOUT</button>
+            </a>
+            {% else %}
+            <a class="nav-link" href="{% url 'login' %}"> <button type="button" class="btn btn-success"><img src="{% static 'images/person.svg' %}" alt=""> LOGIN</button>
+            </a>
+        </li>
+        {% endif %}
+      </ul>
+
+
+  </nav>
+  

@@ -1,0 +1,16 @@
+{% for postroom in postrooms %}
+    
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
+    
+    <a  href="{% url 'user-profile' postroom.host.id %}">@{{postroom.host.username}}</a>
+    <h4>Post {{postroom.id}} - <a href="{% url 'postroom' postroom.id %}">{{postroom.name}}</a> </h4>
+    <small>{{postroom.type_of_c.name}}</small>
+    {% if request.user == postroom.host %}
+    <br>
+    <a href="{% url 'update-post' postroom.id %}"><button type="button" class="btn btn-success">Edit-Post</button></a>
+    <a  href="{% url 'delete-post' postroom.id %}"><button type="button" class="btn btn-warning">Delete-Post</button></a>
+    {% endif %}
+</div>
+
+{% endfor %}
+                  

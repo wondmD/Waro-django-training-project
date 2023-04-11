@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<style>
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+</style>
+<h1>{{user.username}}</h1>
+
+<div class="container">
+    <div>
+        {% include 'base/type_componenet.html' %}
+    </div>
+        
+    <div>
+        
+        {% include 'base/feed_componenet.html' %}
+    </div>
+   
+    <div>
+        {% include 'base/activity_componenet.html' %}
+    </div>
+   
+
+</div>
+{% endblock content %}
